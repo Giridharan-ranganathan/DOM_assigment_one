@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Creating col
+        function col_create(tagName,attrName,attrvalue){
+            var colName = document.createElement("div");
+            colName.setAttribute(attrName,attrvalue);
+            return colName;
+        }
+        //  creating label 
+        function label_create(tagName,attrName,attrvalue,content){
+            var label = document.createElement(tagName);
+            label.setAttribute(attrName,attrvalue);
+            label.innerHTML=content;
+            return label;
+        }
+            // creating input 
+        function input_create(tagName,attrName1,attrvalue1,attrName2,attrvalue2){
+            var input = document.createElement(tagName);
+            input.setAttribute(attrName1,attrvalue1);
+            input.setAttribute(attrName2,attrvalue2);
+            return input;
+        }
+            // Creating break 
+        function break_create(br){
+        var ele = document.createElement("br");
+        return ele;
+       }
+
+     var totalDiv = col_create("div","class","col-md-12");
+     var colOne = col_create("div","class","col-md-6");
+    //  firstName
+     var firstName = label_create("label","for","firstName","FirstName");
+     var br1 =break_create("br");
+     var inputFName = input_create("input","type","text","id","firstname");
+     var br2 = break_create("br");
+    // lastName
+     var lastName = label_create("label","for","lastName","LastName");
+     var br3 =break_create("br");
+     var inputLName = input_create("input","type","text","id","lastname");
+     var br4 = break_create("br"); 
+    // address
+    var address = label_create("label","for","address","Address");
+    var br5 = break_create("br");
+    var inputAddress = input_create("input","type","text","id","address");
+    var br6 = break_create("br");
+    // pincode
+    var pincode = label_create("label","for","pincode","Pincode");
+    var br7 = break_create("br");
+    var inputPincode = input_create("input","type","text","id","pincode");
+    var br8 = break_create("br");
+    // Gender
+    var inputGenderMale = input_create("input","type","radio","id","pincode");
+    var gender = label_create("label","for","gender","Gender");
+
+     totalDiv.append(colOne);
+     colOne.append(firstName,br1,inputFName,br2,lastName,br3,inputLName,br4,address,br5,
+                    inputAddress,br6,pincode,br7,inputPincode,br8,gender);
+    
+
+     document.body.append(totalDiv);
+
+
+    </script>
+</body>
+</html>
