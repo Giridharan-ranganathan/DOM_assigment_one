@@ -1,72 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>Document</title>
 </head>
+
 <body>
     <script>
+        // form tag 
+        function formTag(tagName) {
+            var fTag = document.createElement("form");
+            return fTag;
+        }
         // Creating col
-        function col_create(tagName,attrName,attrvalue){
+        function col_create(tagName, attrName, attrvalue) {
             var colName = document.createElement("div");
-            colName.setAttribute(attrName,attrvalue);
+            colName.setAttribute(attrName, attrvalue);
             return colName;
         }
         //  creating label 
-        function label_create(tagName,attrName,attrvalue,content){
+        function label_create(tagName, attrName, attrvalue, content) {
             var label = document.createElement(tagName);
-            label.setAttribute(attrName,attrvalue);
-            label.innerHTML=content;
+            label.setAttribute(attrName, attrvalue);
+            label.innerHTML = content;
             return label;
         }
-            // creating input 
-        function input_create(tagName,attrName1,attrvalue1,attrName2,attrvalue2){
+        // creating input 
+        function input_create(tagName, attrName1, attrvalue1, attrName2, attrvalue2, attrName3, attrvalue3) {
             var input = document.createElement(tagName);
-            input.setAttribute(attrName1,attrvalue1);
-            input.setAttribute(attrName2,attrvalue2);
+            input.setAttribute(attrName1, attrvalue1);
+            input.setAttribute(attrName2, attrvalue2);
+            input.setAttribute(attrName3, attrvalue3);
             return input;
         }
-            // Creating break 
-        function break_create(br){
-        var ele = document.createElement("br");
-        return ele;
-       }
+        // Creating break 
+        function break_create(br) {
+            var ele = document.createElement("br");
+            return ele;
+        }
 
-     var totalDiv = col_create("div","class","col-md-12");
-     var colOne = col_create("div","class","col-md-6");
-    //  firstName
-     var firstName = label_create("label","for","firstName","FirstName");
-     var br1 =break_create("br");
-     var inputFName = input_create("input","type","text","id","firstname");
-     var br2 = break_create("br");
-    // lastName
-     var lastName = label_create("label","for","lastName","LastName");
-     var br3 =break_create("br");
-     var inputLName = input_create("input","type","text","id","lastname");
-     var br4 = break_create("br"); 
-    // address
-    var address = label_create("label","for","address","Address");
-    var br5 = break_create("br");
-    var inputAddress = input_create("input","type","text","id","address");
-    var br6 = break_create("br");
-    // pincode
-    var pincode = label_create("label","for","pincode","Pincode");
-    var br7 = break_create("br");
-    var inputPincode = input_create("input","type","text","id","pincode");
-    var br8 = break_create("br");
-    // Gender
-    var inputGenderMale = input_create("input","type","radio","id","pincode");
-    var gender = label_create("label","for","gender","Gender");
+        var containerDiv = col_create("div","class","container-sm");
 
-     totalDiv.append(colOne);
-     colOne.append(firstName,br1,inputFName,br2,lastName,br3,inputLName,br4,address,br5,
-                    inputAddress,br6,pincode,br7,inputPincode,br8,gender);
-    
+        var form = formTag("form");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            fof();
+        });
 
-     document.body.append(totalDiv);
+        var div1 = col_create("div", "class", "form-group");
+        var div2 = col_create("div", "class", "form-group");
+        var div3 = col_create("div", "class", "form-group");
+        var div4 = col_create("div", "class", "form-group");
+        var div5 = col_create("div", "class", "form-group");
+        var div6 = col_create("div", "class", "form-group");
+        var div7 = col_create("div", "class", "form-group");
 
+        //  firstName
+        var firstName = label_create("label", "for", "firstName", "FirstName");
+        var inputFName = input_create("input", "type", "text", "id", "firstname", "class", "form-control");
+
+        // lastName
+        var lastName = label_create("label", "for", "lastName", "LastName");
+        var inputLName = input_create("input", "type", "text", "id", "lastname", "class", "form-control");
+
+        // address
+        var address = label_create("label", "for", "address", "Address");
+        var inputAddress = input_create("input", "type", "text", "id", "address", "class", "form-control");
+
+        // pincode
+        var pincode = label_create("label", "for", "pincode", "Pincode");
+        var inputPincode = input_create("input", "type", "text", "id", "pincode", "class", "form-control");
+
+        // Gender
+        var genderLabel = label_create("label", "for", "gender", "Gender : ");
+        var gender1 = document.createElement("div");
+        gender1.classList.add("form-check", "form-check-inline");
+        gender1.innerHTML = `
+  <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
+  <label class="form-check-label" for="inlineRadio1">Male</label>
+`;
+
+        var gender2 = document.createElement("div");
+        gender2.classList.add("form-check", "form-check-inline");
+        gender2.innerHTML = `
+  <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
+  <label class="form-check-label" for="inlineRadio2">Female</label>
+`;
+
+        // State 
+        var state = label_create("label", "for", "state", "State");
+        var stateInput = input_create("input", "type", "text", "id", "state", "class", "form-control");
+
+        // Country 
+        var country = label_create("label", "for", "country", "Country");
+        var countryInput = input_create("input", "type", "text", "id", "country", "class", "form-control");
+
+        //  Buttons
+        var resetButton = document.createElement("button");
+        resetButton.setAttribute("type","reset");
+        resetButton.classList.add("btn","btn-info");
+        resetButton.innerText = "Reset"; 
+
+        var submitButton = document.createElement("button");
+        submitButton.setAttribute("type","submit");
+        submitButton.classList.add("btn","btn-success");
+        submitButton.setAttribute("style","margin-left: 10px");
+        submitButton.innerText = "Submit";
+
+        var table = document.createElement("table");
+        table.classList.add("table","table-bordered");
+
+        var thead = document.createElement("thead");
+        
+        var tr = document.createElement("tr");
+
+        var header = ["FirstName","LastName","Address","Pincode","Gender","State","Country"];
+        header.forEach(function(headerText) {
+            var headerCell = document.createElement("th");
+            headerCell.textContent = headerText;
+            tr.appendChild(headerCell);
+        });
+        
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        function fof(){
+            var firstNameVal = document.getElementById("firstname").value;
+            var lastNameVal = document.getElementById("lastname").value;
+            var addressVal = document.getElementById("address").value;
+            var pincodeVal = document.getElementById("pincode").value;
+            var genderVal = document.querySelector('input[name="gender"]:checked').value;
+            var stateVal = document.getElementById("state").value;
+            var countryVal = document.getElementById("country").value;
+
+            var rowData = [firstNameVal, lastNameVal, addressVal, pincodeVal, genderVal, stateVal, countryVal];
+            
+            var tableBody = document.createElement("tbody");
+            var row = document.createElement("tr");
+
+            rowData.forEach(function(value) {
+                var cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+            tableBody.appendChild(row);
+            table.appendChild(tableBody);
+        }
+
+        containerDiv.append(form,table);
+        form.append(div1, div2, div3, div4, genderLabel, gender1, gender2, div5, div6, div7);
+        div1.append(firstName, inputFName);
+        div2.append(lastName, inputLName);
+        div3.append(address, inputAddress);
+        div4.append(pincode, inputPincode);
+        div5.append(state, stateInput);
+        div6.append(country, countryInput);
+        div7.append(resetButton, submitButton);
+
+        document.body.appendChild(containerDiv);
     </script>
 </body>
+
 </html>
