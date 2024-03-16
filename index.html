@@ -50,6 +50,11 @@
             event.preventDefault();
             fof();
         });
+          
+       form.addEventListener("reset", function(event) {
+        event.preventDefault();
+        window.location.reload();
+       })
 
         var div1 = col_create("div", "class", "form-group");
         var div2 = col_create("div", "class", "form-group");
@@ -100,17 +105,20 @@
         var countryInput = input_create("input", "type", "text", "id", "country", "class", "form-control");
 
         //  Buttons
+        // reset btn
         var resetButton = document.createElement("button");
         resetButton.setAttribute("type","reset");
         resetButton.classList.add("btn","btn-info");
         resetButton.innerText = "Reset"; 
-
+        // submitButton
         var submitButton = document.createElement("button");
         submitButton.setAttribute("type","submit");
         submitButton.classList.add("btn","btn-success");
         submitButton.setAttribute("style","margin-left: 10px");
         submitButton.innerText = "Submit";
-
+        
+        var mutedContent = document.createElement("p");
+        mutedContent.innerHTML = `<small id="emailHelp" class="form-text text-muted">This Reset button for Clear Form and Table</small>`;
         var table = document.createElement("table");
         table.classList.add("table","table-bordered");
 
@@ -153,7 +161,7 @@
         }
 
         containerDiv.append(form,table);
-        form.append(div1, div2, div3, div4, genderLabel, gender1, gender2, div5, div6, div7);
+        form.append(div1, div2, div3, div4, genderLabel, gender1, gender2, div5, div6, div7,mutedContent);
         div1.append(firstName, inputFName);
         div2.append(lastName, inputLName);
         div3.append(address, inputAddress);
